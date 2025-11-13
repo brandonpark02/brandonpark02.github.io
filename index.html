@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ♡</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+    font-family: system-ui, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #dbe7ff, #ffe5f0);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Card styling */
+.box {
+    background: white;
+    padding: 28px;
+    border-radius: 18px;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+    display: none;
+}
+.show { display: block; }
+
+input {
+    padding: 10px 14px;
+    width: 85%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+button {
+    margin-top: 16px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    background: #6b8cff;
+    color: white;
+    font-size: 15px;
+}
+button:active { transform: scale(0.97); }
+
+.message {
+    margin-top: 10px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.footer {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #999;
+}
+
+/* IMAGES */
+.bottom-left-img {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 140px;
+    max-width: 140px !important;
+    border-radius: 20px;
+    opacity: 0.98;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    pointer-events: none;
+    z-index: 999;
+    transition: opacity 0.2s ease;
+}
+
+.top-left-img {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 120px;
+    max-width: 120px !important;
+    border-radius: 20px;
+    opacity: 0.98;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    pointer-events: none;
+    z-index: 999;
+    transition: opacity 0.2s ease;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgm" src="song.mp3" loop></audio>
+
+<!-- PASSWORD PAGE -->
+<div id="passwordPage" class="box show">
+    <h2>Enter the password, love 💙</h2>
+    <input type="password" id="pass" placeholder="Password">
+    <button onclick="checkPass()">Enter</button>
+    <p id="wrong" style="color:red; display:none;">Wrong password, try again.</p>
+</div>
+
+<!-- MAIN PAGE -->
+<div id="mainPage" class="box">
+    <div class="heart">♡♡♡</div>
+    <h1>Hi, beautiful boy.</h1>
+    <p class="message">
+        This page is made just for you.<br>
+        Thank you for being part of my life.<br>
+        You make everything softer and better.
+    </p>
+
+    <button onclick="toggleSecret()">Tap here for a secret message</button>
+
+    <p id="secret" class="message" style="display:none;">
+        No matter how tired or stressed you feel,<br>
+        I always choose you. ♡
+    </p>
+
+    <div class="footer">
+        Made with love · <span id="dateNow"></span>
+    </div>
+</div>
+
+<script>
+const correctPassword = "18042001";
+
+function startMusic() {
+    const bgm = document.getElementById("bgm");
+    if (bgm.paused) {
+        bgm.volume = 0.8;
+        bgm.play().catch(() => {});
+    }
+}
+
+function checkPass() {
+    let input = document.getElementById("pass").value;
+    startMusic();
+
+    if (input === correctPassword) {
+        // show main, hide password card
+        document.getElementById("passwordPage").style.display = "none";
+        document.getElementById("mainPage").classList.add("show");
+        document.getElementById("wrong").style.display = "none";
+
+        // fade out images + disable pointer events
+        const bottomImg = document.querySelector(".bottom-left-img");
+        const topImg = document.querySelector(".top-left-img");
+
+        if (bottomImg) {
+            bottomImg.style.opacity = "0";
+            bottomImg.style.pointerEvents = "none";
+        }
+        if (topImg) {
+            topImg.style.opacity = "0";
+            topImg.style.pointerEvents = "none";
+        }
+
+        setTimeout(() => {
+            if (bottomImg) bottomImg.style.display = "none";
+            if (topImg) topImg.style.display = "none";
+        }, 250);
+    } else {
+        document.getElementById("wrong").style.display = "block";
+    }
+}
+
+function toggleSecret() {
+    let s = document.
+
+getElementById("secret");
+    s.style.display = (s.style.display === "none" || s.style.display === "") ? "block" : "none";
+}
+
+// allow pressing Enter key in the input
+document.addEventListener("DOMContentLoaded", () => {
+    const passInput = document.getElementById("pass");
+    passInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            checkPass();
+        }
+    });
+});
+
+document.getElementById("dateNow").textContent =
+    new Date().toLocaleDateString();
+</script>
+
+<!-- IMAGES -->
+<img src="brandon.jpg" class="bottom-left-img" alt="">
+<img src="brandontwo.jpg" class="top-left-img" alt="">
+
+</body>
+</html>
