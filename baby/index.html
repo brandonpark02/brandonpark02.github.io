@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <title>For My Baby ❤️</title>
 <style>
-body {
+html, body {
     margin: 0;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,9 +14,15 @@ body {
     font-family: 'Georgia', serif;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .book {
-    width: 500px;  /* Lebar lebih besar */
-    height: 600px; /* Tinggi lebih besar */
+    width: 500px;
+    height: 600px;
     perspective: 1500px;
     position: relative;
 }
@@ -55,10 +61,7 @@ body {
 .book.flipped .page2 { transform: rotateY(0deg); z-index: 3; }
 
 .flip-btn {
-    position: absolute;
-    bottom: -80px;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: 30px;
     background: #c97c5d;
     color: white;
     border: none;
@@ -76,29 +79,31 @@ body {
     .page { padding: 30px; }
     .page h1 { font-size: 28px; }
     .page p { font-size: 16px; }
-    .flip-btn { padding: 12px 20px; font-size: 14px; bottom: -60px; }
+    .flip-btn { padding: 12px 20px; font-size: 14px; }
 }
 </style>
 </head>
 <body>
 
-<div class="book" id="book">
-    <div class="page page1">
-        <h1>Happy New Year<br>to my baby 🎆❤️</h1>
-        <p style="text-align:center; margin-top:40px;">
-            A little letter just for you.
-        </p>
+<div class="container">
+    <div class="book" id="book">
+        <div class="page page1">
+            <h1>Happy New Year<br>to my baby 🎆❤️</h1>
+            <p style="text-align:center; margin-top:40px;">
+                A little letter just for you.
+            </p>
+        </div>
+
+        <div class="page page2">
+            <h1>💌</h1>
+            <p>
+                <!-- Kau boleh tulis ucapan kau kat sini -->
+            </p>
+        </div>
     </div>
 
-    <div class="page page2">
-        <h1>💌</h1>
-        <p>
-            <!-- Kau boleh tulis ucapan kau kat sini -->
-        </p>
-    </div>
+    <button class="flip-btn" onclick="flipPage()">Flip Page</button>
 </div>
-
-<button class="flip-btn" onclick="flipPage()">Flip Page</button>
 
 <script>
 function flipPage() {
