@@ -1,0 +1,113 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Baby ❤️</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f5efe6;
+        font-family: 'Georgia', serif;
+    }
+
+    .book {
+        width: 320px;
+        height: 420px;
+        perspective: 1200px;
+    }
+
+    .page {
+        width: 100%;
+        height: 100%;
+        background: #fffaf0;
+        border: 1px solid #d8cfc4;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        position: absolute;
+        transform-origin: left;
+        transition: transform 1s ease;
+        padding: 30px;
+        box-sizing: border-box;
+    }
+
+    .page h1 {
+        text-align: center;
+        color: #6b4f4f;
+    }
+
+    .page p {
+        color: #5a4a42;
+        line-height: 1.6;
+        white-space: pre-line;
+    }
+
+    .page1 {
+        z-index: 2;
+    }
+
+    .page2 {
+        transform: rotateY(-180deg);
+        background: #fff7e6;
+    }
+
+    .book.flipped .page1 {
+        transform: rotateY(-180deg);
+    }
+
+    .book.flipped .page2 {
+        transform: rotateY(0deg);
+        z-index: 3;
+    }
+
+    .flip-btn {
+        position: absolute;
+        bottom: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #c97c5d;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 14px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .flip-btn:hover {
+        background: #b66a4e;
+    }
+</style>
+</head>
+<body>
+
+<div class="book" id="book">
+    <div class="page page1">
+        <h1>Happy New Year<br>to my baby 🎆❤️</h1>
+        <p style="text-align:center; margin-top:40px;">
+            A little letter just for you.
+        </p>
+    </div>
+
+    <div class="page page2">
+        <h1>💌</h1>
+        <p>
+            <!-- ISI UCAPAN KAU KAT SINI -->
+
+        </p>
+    </div>
+</div>
+
+<button class="flip-btn" onclick="flipPage()">Flip Page</button>
+
+<script>
+    function flipPage() {
+        document.getElementById("book").classList.toggle("flipped");
+    }
+</script>
+
+</body>
+</html>
