@@ -52,11 +52,23 @@ html, body {
     line-height: 1.8;
     white-space: pre-line;
     font-size: 18px;
+    margin-top: 20px;
+}
+
+/* Page 2 scrollable */
+.page2 {
+    transform: rotateY(-180deg);
+    background: #fff7e6;
+    overflow-y: auto;
+    padding-right: 20px; /* supaya scrollbar tak tutup text */
+}
+
+.page2 p {
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 .page1 { z-index: 2; }
-.page2 { transform: rotateY(-180deg); background: #fff7e6; }
-
 .book.flipped .page1 { transform: rotateY(-180deg); }
 .book.flipped .page2 { transform: rotateY(0deg); z-index: 3; }
 
@@ -142,6 +154,7 @@ muahhh 💋
         </div>
     </div>
 
+    <!-- Arrows -->
     <div class="arrow arrow-left" onclick="flipPage()">&#8592;</div>
     <div class="arrow arrow-right" onclick="flipPage()">&#8594;</div>
 </div>
